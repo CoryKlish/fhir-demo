@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-/** END CONFIG */
+////////////// END CONFIG //////////////
 
 app.get('/api/data', async (req, res, next) => {
   try {
