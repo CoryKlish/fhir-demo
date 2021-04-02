@@ -4,7 +4,7 @@
   "description": "FHIR Demo",
   "main": "server.js",
   "scripts": {
-    "start": "heroku config:set NODE_ENV=production && node server.js",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
