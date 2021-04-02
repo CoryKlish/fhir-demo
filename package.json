@@ -1,0 +1,29 @@
+{
+  "name": "fhir-demo",
+  "version": "1.0.0",
+  "description": "FHIR Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoryKlish/fhir-demo.git"
+  },
+  "author": "Cory Klish",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CoryKlish/fhir-demo/issues"
+  },
+  "homepage": "https://github.com/CoryKlish/fhir-demo#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
