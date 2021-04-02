@@ -13,6 +13,17 @@ app.use(cors());
 // Serve static files from React
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+// Force HTTPS
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`);
+    else next();
+  });
+}
+
+/** END CONFIG */
+
 app.get('/api/data', async (req, res, next) => {
   try {
     const respArray = await Promise.all([
