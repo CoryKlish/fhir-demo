@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const http = require('http');
+const enforce = require('express-sslify');
 
 /// IMPORT CONTROLLERS ///
 const patientController = require('./controllers/patient/patientController');
@@ -14,6 +16,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // CORS Policy
 app.use(cors());
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 /////////////////////// END CONFIG ///////////////////////
 
@@ -44,4 +48,7 @@ app.use(async (err, req, res, next) => {
   });
 });
 
-app.listen(port, () => console.log(`Running on port ${port}`));
+// app.listen(port, () => console.log(`Running on port ${port}`));
+http.createServer(app).listen(app.get('port'), () => {
+  console.log(`Running on port ${port}`);
+});
