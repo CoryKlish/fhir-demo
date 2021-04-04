@@ -29,6 +29,9 @@ app.get(
   patientController.calculation,
 );
 
+// GET extra tab info
+app.get('/api/extra-info', patientController.extraInfo);
+
 // React handles all other routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));

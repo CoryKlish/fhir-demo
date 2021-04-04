@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useFetch from 'use-http';
 import SexRadioToggle from '../components/SexRadioToggle';
@@ -7,8 +7,10 @@ import AgeInput from '../components/AgeInput';
 import WeightInput from '../components/WeightInput';
 import CreatinineInput from '../components/CreatinineInput';
 import HeightInput from '../components/HeightInput';
+import InfoPopover from '../components/InfoPopover';
 
 const CalculatorForm = () => {
+  // Form State
   const [sex, setSex] = useState(null);
   const [age, setAge] = useState(null);
   const [weight, setWeight] = useState(null);
@@ -16,10 +18,27 @@ const CalculatorForm = () => {
   const [height, setHeight] = useState(null);
   const [results, setResults] = useState(null);
 
+  // Alert State
   const [showAlert, setShowAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
 
-  const { loading, error, data = [] } = useFetch('/api/data', []);
+  /// API ///
+
+  // GET patient data on component load
+  const {
+    loading: loadingData,
+    error: patientError,
+    data: patientData = {},
+  } = useFetch('/api/data', []);
+
+  // GET pop over data on component load
+  const {
+    loading: loadingPopOver,
+    error: popOverError,
+    data: popOverData = null,
+  } = useFetch('/api/extra-info', []);
+
+  // GET calculator respose. Triggered on form submit
   const { get, response: calcResponse } = useFetch('/api/calculation');
 
   const handleSubmit = async (e) => {
@@ -38,9 +57,11 @@ const CalculatorForm = () => {
     await get(params);
 
     // Display error on fail
-    if (!calcResponse.ok) {
+    if (!calcResponse?.ok) {
       setErrorMessage(() => calcResponse.data.errors);
       setShowAlert(() => true);
+
+      // Remove previous results
       setResults(null);
     } else {
       setResults(calcResponse.data);
@@ -48,23 +69,25 @@ const CalculatorForm = () => {
   };
 
   useEffect(() => {
-    if (error) {
-      setErrorMessage(() => data.errors);
+    if (popOverError || patientError) {
+      setErrorMessage(() => 'Error loading content');
       setShowAlert(() => true);
     } else {
-      setSex(data.gender);
-      setAge(data.age);
-      setWeight(data.weight);
-      setHeight(data.height);
+      setSex(patientData.gender);
+      setAge(patientData.age);
+      setWeight(patientData.weight);
+      setHeight(patientData.height);
     }
-  }, [data, error]);
+  }, [patientData, popOverError, patientError]);
 
-  if (loading) {
-    return <div>Loading</div>;
+  if (loadingData || loadingPopOver) {
+    return <Spinner animation="border" />;
   }
 
   return (
     <>
+      {/* Render pop over if not loading and response */}
+      {!loadingPopOver && popOverData && <InfoPopover data={popOverData} />}
       <div>
         <Form onSubmit={handleSubmit}>
           <SexRadioToggle sex={sex} setSex={setSex} />

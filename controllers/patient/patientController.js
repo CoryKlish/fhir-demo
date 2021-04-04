@@ -3,6 +3,7 @@ const {
   SEX_AND_AGE_PATH,
   WEIGHT_PATH,
   HEIGHT_PATH,
+  POPOVER_DATA,
 } = require('../../constants');
 
 /// HELPERS ///
@@ -72,4 +73,8 @@ const calculation = (req, res, next) => {
   res.json({ calculatedScore, severity });
 };
 
-module.exports = { patientData, validateCalculation, calculation };
+const extraInfo = (req, res, next) => {
+  return res.json(POPOVER_DATA);
+};
+
+module.exports = { patientData, validateCalculation, calculation, extraInfo };
