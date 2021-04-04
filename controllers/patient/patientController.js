@@ -1,5 +1,9 @@
 const { query, validationResult } = require('express-validator');
-require('dotenv').config();
+const {
+  SEX_AND_AGE_PATH,
+  WEIGHT_PATH,
+  HEIGHT_PATH,
+} = require('../../constants');
 
 /// HELPERS ///
 const {
@@ -11,10 +15,10 @@ const {
 const patientData = async (req, res, next) => {
   try {
     const respArray = await Promise.all([
-      // Hardcoded URLs in ENV. Able to request different resources by passing different URLs in future
-      getSexAndAge(process.env.SEX_AND_AGE_PATH),
-      getWeight(process.env.WEIGHT_PATH),
-      getHeight(process.env.HEIGHT_PATH),
+      // Hardcoded URLs in constants. Able to request different resources by passing different URLs in future
+      getSexAndAge(SEX_AND_AGE_PATH),
+      getWeight(WEIGHT_PATH),
+      getHeight(HEIGHT_PATH),
     ]);
 
     // Format response object

@@ -1,8 +1,8 @@
-require('dotenv').config();
+const { FHIR_BASE_URL } = require('../../../constants');
 
 const axios = require('axios');
 // Base URL for all patient requests
-axios.defaults.baseURL = process.env.FHIR_BASE_URL;
+axios.defaults.baseURL = FHIR_BASE_URL;
 
 /** Retrieve patient sex and age
  *
