@@ -1,13 +1,13 @@
 import React from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
+import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
 const AgeInput = ({ age, setAge }) => {
   return (
-    <Form.Group controlId="formAge">
+    <InputGroup className="mb-3">
       <Form.Label column sm="2">
         Age
       </Form.Label>
-      <Form.Control
+      <FormControl
         type="number"
         step="1"
         name="age"
@@ -17,7 +17,7 @@ const AgeInput = ({ age, setAge }) => {
       <InputGroup.Append>
         <InputGroup.Text id="years-addon">years</InputGroup.Text>
       </InputGroup.Append>
-    </Form.Group>
+    </InputGroup>
   );
 };
 

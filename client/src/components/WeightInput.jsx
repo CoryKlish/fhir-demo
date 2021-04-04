@@ -1,19 +1,22 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
 const WeightInput = ({ weight, setWeight }) => {
   return (
-    <Form.Group controlId="formWeight">
+    <InputGroup className="mb-3">
       <Form.Label column sm="2">
         Weight
       </Form.Label>
-      <Form.Control
+      <FormControl
         type="number"
         name="weight"
         value={weight ?? ''}
         onChange={(e) => setWeight(+e.target.value)}
       />
-    </Form.Group>
+      <InputGroup.Append>
+        <InputGroup.Text id="kg-addon">kg</InputGroup.Text>
+      </InputGroup.Append>
+    </InputGroup>
   );
 };
 

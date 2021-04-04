@@ -3,7 +3,7 @@ import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
 
 const InfoPopover = ({ data }) => {
   return (
-    <>
+    <div style={{ margin: 30 }}>
       <OverlayTrigger
         trigger="click"
         placement="bottom"
@@ -17,7 +17,9 @@ const InfoPopover = ({ data }) => {
           </Popover>
         }
       >
-        <Button variant="secondary">When to Use</Button>
+        <Button variant="secondary" style={{ margin: 10 }}>
+          When to Use
+        </Button>
       </OverlayTrigger>
       <OverlayTrigger
         trigger="click"
@@ -31,9 +33,11 @@ const InfoPopover = ({ data }) => {
           </Popover>
         }
       >
-        <Button variant="secondary">Pearls/Pitfalls</Button>
+        <Button variant="secondary" style={{ margin: 10 }}>
+          Pearls/Pitfalls
+        </Button>
       </OverlayTrigger>
-    </>
+    </div>
   );
 };
 

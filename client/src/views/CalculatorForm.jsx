@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useFetch from 'use-http';
 import SexRadioToggle from '../components/SexRadioToggle';
@@ -85,7 +85,7 @@ const CalculatorForm = () => {
   }
 
   return (
-    <>
+    <Container>
       {/* Render pop over if not loading and response */}
       {!loadingPopOver && popOverData && <InfoPopover data={popOverData} />}
       <div>
@@ -104,11 +104,17 @@ const CalculatorForm = () => {
         </Form>
       </div>
       {results && (
-        <div>
+        <div style={{ marginTop: 10 }}>
           Results: score {results.calculatedScore}, {results.severity}
         </div>
       )}
       <Alert
+        style={{
+          marginTop: 10,
+          width: '50%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
         show={showAlert}
         variant="danger"
         onClose={() => setShowAlert(false)}
@@ -119,7 +125,7 @@ const CalculatorForm = () => {
           <p key={index}>{err.msg}</p>
         ))}
       </Alert>
-    </>
+    </Container>
   );
 };
 

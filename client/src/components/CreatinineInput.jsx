@@ -1,19 +1,22 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
 const CreatinineInput = ({ creatinine, setCreatinine }) => {
   return (
-    <Form.Group controlId="formCreatinine">
+    <InputGroup className="mb-3">
       <Form.Label column sm="2">
         Creatinine
       </Form.Label>
-      <Form.Control
+      <FormControl
         type="number"
         name="creatinine"
         value={creatinine ?? ''}
         onChange={(e) => setCreatinine(+e.target.value)}
       />
-    </Form.Group>
+      <InputGroup.Append>
+        <InputGroup.Text id="mgdl-addon">mg/dl</InputGroup.Text>
+      </InputGroup.Append>
+    </InputGroup>
   );
 };
 

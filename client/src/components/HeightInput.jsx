@@ -1,19 +1,22 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
 const HeightInput = ({ height, setHeight }) => {
   return (
-    <Form.Group controlId="formHeight">
+    <InputGroup className="mb-3">
       <Form.Label column sm="2">
         Height
       </Form.Label>
-      <Form.Control
+      <FormControl
         type="number"
         name="height"
         value={height ?? ''}
         onChange={(e) => setHeight(+e.target.value)}
       />
-    </Form.Group>
+      <InputGroup.Append>
+        <InputGroup.Text id="cm-addon">cm</InputGroup.Text>
+      </InputGroup.Append>
+    </InputGroup>
   );
 };
 
