@@ -13,6 +13,10 @@ const {
   getHeight,
 } = require('./helpers/patientHelpers');
 
+/**
+ * GET /api/data
+ * Retrieves sex, age, weight, and height of specified patient
+ */
 const patientData = async (req, res, next) => {
   try {
     const respArray = await Promise.all([
@@ -31,6 +35,9 @@ const patientData = async (req, res, next) => {
   }
 };
 
+/**
+ * Calculation for GET /api/calculation
+ */
 const validateCalculation = () => {
   return [
     query('sex', 'Invalid Sex').exists().isString().isIn(['male', 'female']),
@@ -41,6 +48,11 @@ const validateCalculation = () => {
   ];
 };
 
+/**
+ * GET /api/calculation
+ * Runs creatinine calculation with given params
+ * Returns calculated score and severity
+ */
 const calculation = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -73,6 +85,10 @@ const calculation = (req, res, next) => {
   res.json({ calculatedScore, severity });
 };
 
+/**
+ * GET /api/extra-info
+ * Returns info for popover tabs
+ */
 const extraInfo = (req, res, next) => {
   return res.json(POPOVER_DATA);
 };

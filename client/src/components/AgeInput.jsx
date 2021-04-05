@@ -1,6 +1,14 @@
 import React from 'react';
 import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
+/**
+ * Input component for age
+ *
+ * @param {number} age - age state
+ * @param {function} setAge - setter function for age
+ *
+ * @returns {JSX.Element}
+ */
 const AgeInput = ({ age, setAge }) => {
   return (
     <InputGroup className="mb-3">

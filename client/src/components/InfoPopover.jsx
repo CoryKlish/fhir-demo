@@ -1,6 +1,13 @@
 import React from 'react';
 import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
 
+/**
+ * Popover info tab
+ *
+ * @param {Object} data - contains info to display in popovers
+ *
+ * @returns {JSX.Element}
+ */
 const InfoPopover = ({ data }) => {
   return (
     <div style={{ margin: 30 }}>

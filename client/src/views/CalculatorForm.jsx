@@ -9,6 +9,9 @@ import CreatinineInput from '../components/CreatinineInput';
 import HeightInput from '../components/HeightInput';
 import InfoPopover from '../components/InfoPopover';
 
+/**
+ * Renders basic form for Creatinine Calculator
+ */
 const CalculatorForm = () => {
   // Form State
   const [sex, setSex] = useState(null);

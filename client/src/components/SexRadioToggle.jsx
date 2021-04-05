@@ -1,6 +1,14 @@
 import React from 'react';
 import { Form, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 
+/**
+ * Toggle component for sex
+ *
+ * @param {string} sex - sex state
+ * @param {function} setSex - setter function for sex
+ *
+ * @returns {JSX.Element}
+ */
 const SexRadioToggle = ({ sex, setSex }) => {
   // Radio button choices
   const options = ['female', 'male'];

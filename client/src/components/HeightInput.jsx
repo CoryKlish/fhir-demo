@@ -1,6 +1,14 @@
 import React from 'react';
 import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
+/**
+ * Input component for height
+ *
+ * @param {number} height - height state
+ * @param {function} setHeight - setter function for height
+ *
+ * @returns {JSX.Element}
+ */
 const HeightInput = ({ height, setHeight }) => {
   return (
     <InputGroup className="mb-3">

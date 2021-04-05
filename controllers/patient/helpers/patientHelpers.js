@@ -4,7 +4,8 @@ const axios = require('axios');
 // Base URL for all patient requests
 axios.defaults.baseURL = FHIR_BASE_URL;
 
-/** Retrieve patient sex and age
+/**
+ * Retrieve patient sex and age
  *
  * @param {string} sexAndAgePath - Path to request
  * @returns {Object} sex and age
@@ -24,7 +25,8 @@ const getSexAndAge = async (sexAndAgePath) => {
   return { gender, age };
 };
 
-/** Retrieve patient sex and age
+/**
+ * Retrieve patient sex and age
  *
  * @param {string} weightPath - Path to request
  * @returns {Object} weight
@@ -47,7 +49,8 @@ const getWeight = async (weightPath) => {
   return { weight };
 };
 
-/** Retrieve patient sex and age
+/**
+ * Retrieve patient sex and age
  *
  * @param {string} heightPath - Path to request
  * @returns {Object} height

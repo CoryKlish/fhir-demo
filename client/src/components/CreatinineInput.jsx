@@ -1,6 +1,14 @@
 import React from 'react';
 import { Form, FormControl, InputGroup } from 'react-bootstrap';
 
+/**
+ * Input component for creatinine
+ *
+ * @param {number} creatinine - creatinine state
+ * @param {function} setCreatinine - setter function for creatinine
+ *
+ * @returns {JSX.Element}
+ */
 const CreatinineInput = ({ creatinine, setCreatinine }) => {
   return (
     <InputGroup className="mb-3">
