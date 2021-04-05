@@ -9,6 +9,20 @@ const patientController = require('./controllers/patient/patientController');
 const app = express();
 const port = process.env.PORT || 5000;
 
+const https_redirect = (req, res, next) => {
+  if (process.env.NODE_ENV === 'production') {
+    if (req.headers['x-forwarded-proto'] != 'https') {
+      return res.redirect('https://' + req.headers.host + req.url);
+    } else {
+      return next();
+    }
+  } else {
+    return next();
+  }
+};
+
+app.use(https_redirect);
+
 // Serve static files from React
 app.use(express.static(path.join(__dirname, 'client/build')));
 
