@@ -12,7 +12,7 @@ const AgeInput = ({ age, setAge }) => {
         step="1"
         name="age"
         value={age ?? ''}
-        onChange={(e) => setAge(+e.target.value)}
+        onChange={(e) => setAge(e.target.value)}
       />
       <InputGroup.Append>
         <InputGroup.Text id="years-addon">years</InputGroup.Text>

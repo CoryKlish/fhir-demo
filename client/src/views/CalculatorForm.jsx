@@ -16,6 +16,8 @@ const CalculatorForm = () => {
   const [weight, setWeight] = useState(null);
   const [creatinine, setCreatinine] = useState(null);
   const [height, setHeight] = useState(null);
+
+  // Results State
   const [results, setResults] = useState(null);
 
   // Alert State
@@ -54,6 +56,7 @@ const CalculatorForm = () => {
       height,
     });
 
+    // Make GET request to perform calculation
     await get(params);
 
     // Display error on fail
@@ -105,7 +108,7 @@ const CalculatorForm = () => {
       </div>
       {results && (
         <div style={{ marginTop: 10 }}>
-          Results: score {results.calculatedScore}, {results.severity}
+          Results: Score {results.calculatedScore}, {results.severity}
         </div>
       )}
       <Alert

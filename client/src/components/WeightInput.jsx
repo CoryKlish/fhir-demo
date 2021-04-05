@@ -11,7 +11,7 @@ const WeightInput = ({ weight, setWeight }) => {
         type="number"
         name="weight"
         value={weight ?? ''}
-        onChange={(e) => setWeight(+e.target.value)}
+        onChange={(e) => setWeight(e.target.value)}
       />
       <InputGroup.Append>
         <InputGroup.Text id="kg-addon">kg</InputGroup.Text>

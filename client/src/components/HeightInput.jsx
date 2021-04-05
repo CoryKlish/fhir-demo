@@ -11,7 +11,7 @@ const HeightInput = ({ height, setHeight }) => {
         type="number"
         name="height"
         value={height ?? ''}
-        onChange={(e) => setHeight(+e.target.value)}
+        onChange={(e) => setHeight(e.target.value)}
       />
       <InputGroup.Append>
         <InputGroup.Text id="cm-addon">cm</InputGroup.Text>

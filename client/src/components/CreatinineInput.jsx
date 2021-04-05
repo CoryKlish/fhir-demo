@@ -11,7 +11,7 @@ const CreatinineInput = ({ creatinine, setCreatinine }) => {
         type="number"
         name="creatinine"
         value={creatinine ?? ''}
-        onChange={(e) => setCreatinine(+e.target.value)}
+        onChange={(e) => setCreatinine(e.target.value)}
       />
       <InputGroup.Append>
         <InputGroup.Text id="mgdl-addon">mg/dl</InputGroup.Text>
